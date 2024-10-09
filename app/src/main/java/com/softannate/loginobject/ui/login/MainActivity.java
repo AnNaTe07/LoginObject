@@ -1,12 +1,26 @@
 package com.softannate.loginobject.ui.login;
 
+import static android.Manifest.permission_group.CAMERA;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,7 +34,7 @@ import com.softannate.loginobject.ui.register.RegistroActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivityMainBinding bindingM;
     private MainActivityViewModel vm;
 
 
@@ -28,19 +42,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        bindingM=ActivityMainBinding.inflate(getLayoutInflater());
 
         EdgeToEdge.enable(this);
 
-        setContentView(binding.getRoot());
+        setContentView(bindingM.getRoot());
+
         vm= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
 
 
-        binding.btIngresar.setOnClickListener(new View.OnClickListener() {
+        bindingM.btIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email= binding.etEmail.getText().toString();
-                String pass=binding.etPass.getText().toString();
+                String email= bindingM.etEmail.getText().toString();
+                String pass=bindingM.etPass.getText().toString();
 
                 vm.login(MainActivity.this, email, pass);
 
@@ -66,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //para agregar a el texto el subrayado
-        binding.tvRegistrar.setPaintFlags(binding.tvRegistrar.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        bindingM.tvRegistrar.setPaintFlags(bindingM.tvRegistrar.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-        binding.tvRegistrar.setOnClickListener(new View.OnClickListener() {
+        bindingM.tvRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this, RegistroActivity.class);
-
+               // intent.putExtra("cargarImagen", false);
                 startActivity(intent);
             }
         });
@@ -83,8 +98,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
     private void limpiar(){
-        binding.etEmail.setText("");
-        binding.etPass.setText("");
+        bindingM.etEmail.setText("");
+        bindingM.etPass.setText("");
     }
 }

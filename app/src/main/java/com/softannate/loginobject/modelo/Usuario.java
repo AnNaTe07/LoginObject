@@ -1,5 +1,10 @@
 package com.softannate.loginobject.modelo;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import androidx.lifecycle.MutableLiveData;
+
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
@@ -9,13 +14,25 @@ public class Usuario implements Serializable {
     Long dni;
     String email;
     String pass;
+    byte[] avatar;
 
-    public Usuario(String nombre, String apellido, Long dni, String email, String pass) {
+
+    public Usuario(String nombre, String apellido, Long dni, String email, String pass,byte[] avatar) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.pass = pass;
+        this.avatar = avatar;
+    }
+
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 
     public Usuario() {    }

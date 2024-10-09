@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.register.RegistroActivity">
+
     <EditText
         android:id="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="216dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
@@ -18,7 +19,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,4 +97,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPass2" />
+
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="275dp"
+        android:layout_height="216dp"
+        app:layout_constraintBottom_toTopOf="@+id/etNombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="tomarFoto"
+        app:icon="@drawable/camara"
+        app:iconSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/etNombre"
+        app:layout_constraintEnd_toStartOf="@+id/foto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.114" />
 </androidx.constraintlayout.widget.ConstraintLayout>
